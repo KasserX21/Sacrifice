@@ -106,7 +106,9 @@ m{162,45+90,'rotz'}
 
 plr={3,4}
 m{162,50,'reverse',50,'flip',-100,'spiralholds',50,'mini'}
-
+plr=4
+add{162,1,instant,180,'rotz'}
+plr={3,4}
 me{192,4,linear,0,'stealth',0,'dark',35,'brake'}
 f{192,function()
 	PP[3]:hidden(0)
@@ -133,15 +135,15 @@ f{192,function()
 	P[4]:SetXSpline(0,3,-64/1.5,-100,-1)
     P[4]:SetYSpline(0,3,-64/1.5,-100,-1)
 	
-	P[3]:SetZSpline(0,0,0,0,-1)
-	P[3]:SetZSpline(0,1,0,0,-1)
-	P[3]:SetZSpline(0,2,0,0,-1)
-	P[3]:SetZSpline(0,3,0,0,-1)
+	P[3]:SetZSpline(0,0,0,100,-1)
+	P[3]:SetZSpline(0,1,0,100,-1)
+	P[3]:SetZSpline(0,2,0,100,-1)
+	P[3]:SetZSpline(0,3,0,100,-1)
 	
-	P[4]:SetZSpline(0,0,0,0,-1)
-	P[4]:SetZSpline(0,1,0,0,-1)
-	P[4]:SetZSpline(0,2,0,0,-1)
-	P[4]:SetZSpline(0,3,0,0,-1)
+	P[4]:SetZSpline(0,0,0,-100,-1)
+	P[4]:SetZSpline(0,1,0,-100,-1)
+	P[4]:SetZSpline(0,2,0,-100,-1)
+	P[4]:SetZSpline(0,3,0,-100,-1)
 	
 	P[3]:SetZSpline(1,0,700,800,-1)
 	P[3]:SetZSpline(1,1,700,800,-1)
