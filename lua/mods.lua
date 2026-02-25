@@ -4,7 +4,7 @@ if not P1 or not P2 then
 end
 
 -- judgment / combo proxies
-for pn = 1, 2 do
+for pn = 1, 4 do
 	setupJudgeProxy(PJ[pn], P[pn]:GetChild('Judgment'), pn)
 	setupJudgeProxy(PC[pn], P[pn]:GetChild('Combo'), pn)
 end
@@ -14,8 +14,18 @@ for pn = 1, #PP do
 	P[pn]:hidden(1)
 end
 
+for pn = 3, #PP do
+	PC[pn]:hidden(1)
+	PJ[pn]:hidden(1)
+end
+
 P[1]:x(scx)
 P[2]:x(scx)
+
+P[3]:SetInputPlayer(0)
+P[4]:SetInputPlayer(1)
+P[3]:SetAwake(true)
+P[4]:SetAwake(true)
 
 function RealFOV(fov)
 	return 360 / math.pi * math.atan(math.tan(math.pi * fov / 360) * SCREEN_WIDTH / SCREEN_HEIGHT * 0.75)

@@ -6,5 +6,12 @@
 	<Layer Type = "ActorProxy" Name = "PJ[2]" />
 	<Layer Type = "ActorProxy" Name = "PP[1]" />
 	<Layer Type = "ActorProxy" Name = "PP[2]" />
+	
+	<Layer Type = "ActorProxy" Name = "PC[3]" />
+	<Layer Type = "ActorProxy" Name = "PC[4]" />
+	<Layer Type = "ActorProxy" Name = "PJ[3]" />
+	<Layer Type = "ActorProxy" Name = "PJ[4]" />
+	<Layer Type = "ActorProxy" Name = "PP[3]" />
+	<Layer Type = "ActorProxy" Name = "PP[4]" />
 
 </children></Layer>
