@@ -17,7 +17,7 @@
 #BPMS:0.000=220.000;
 #STOPS:;
 #BGCHANGES:;
-#FGCHANGES:;
+#FGCHANGES:-10000.000000=template/main.xml=1.000000=0=0=1;
 //--------------- dance-single - Kasser + Ant ----------------
 #NOTES:
      dance-single:

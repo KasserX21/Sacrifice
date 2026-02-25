@@ -14,13 +14,16 @@ for pn = 1, #PP do
 	P[pn]:hidden(1)
 end
 
+P[1]:x(scx)
+P[2]:x(scx)
+
 function RealFOV(fov)
 	return 360 / math.pi * math.atan(math.tan(math.pi * fov / 360) * SCREEN_WIDTH / SCREEN_HEIGHT * 0.75)
 end
 
 require('ant.ant')
 require('kasser.kasser')
-require('Ant/proxywall')
+--require('Ant/proxywall')
 
 -- your code goes here here:
 setdefault{2, 'xmod', 100, 'zbuffer', 100, 'receptorzbuffer', 100, 'dizzyholds', 100, 'stealthpastreceptors', 100,'scrollspeedmult',100, 'halgun', 100, 'disablemines', 100, 'modtimer',100,'cover'}
