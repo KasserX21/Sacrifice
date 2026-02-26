@@ -71,11 +71,17 @@ definemod{'rotx','roty','rotz',function(xDegrees, yDegrees, zDegrees, plr)
         end,
         'rotationx','rotationy','rotationz','confusionxoffset','confusionyoffset','confusionzoffset'
     }
-	
+
+{'kaleidoS', function(kaleidoS)
+	kaleido:GetShader():uniform1f('amount',kaleidoS)
+end}
 	
 
 PP[3]:hidden(1)
 PP[4]:hidden(1)
+
+kaleido:hidden(0)
+kal_aft:hidden(0)
 
 -- modchart start
 
@@ -89,7 +95,8 @@ m{162,50,'splinextype',50,'splineytype',50,'brake',100,'stealth',100,'dark'}
 plr={1,2}
 m{162,-100,'drawsizeback'}
 
-
+m{162,122.7,'kaleidoS'}
+add{162,68,inOutExpo,3,'kaleidoS'}
 
 m{162,1100,'dpadinner',50,'reverse',50,'flip',80,'brake',-100,'spiralholds',50,'mini'}
 plr={1,2,3,4}
@@ -101,6 +108,15 @@ add{162,196-162,linear,720*1.5,'rotz'}
 {196+8,8,inOutSine,-200,'y',100,'x'}
 {196+16,8,inOutSine,200,'y',-300,'x'}
 {196+24,8,inOutSine,-200,'y',0,'x'}
+
+fe{162,196-162,linear,0,90,function(p)
+	KaleidoGroupLayer:rotationz(p)
+end}
+{196,32,linear,90,360,function(p)
+	KaleidoGroupLayer:rotationz(p)
+	kaleidoGradient:texcoordvelocity(0,-0.1+p/1000)
+end}
+
 plr=2
 m{162,45+90,'rotz'}
 
@@ -276,4 +292,99 @@ add{360,72,linear,360*4,'rotz'}
 plr={1,2,3,4}
 add{400-32,64,inQuad,720,'rotx'}
 
+chorus_cube:hidden(1)
+f{360,function()
+	chorus_cube:hidden(0)
+end}
+
+-- Did Unc Snap on that Sacrifice?
+-- I wonder where I stole this code from
+
+definemod {'spacesize', function(lol)
+ textureSize = lol/2
+end}
+definemod {'wallspin', function(lol)
+ insideOut = 180+lol
+end}
+
+definemod {'wallspinz', function(lol)
+
+wall1:rotationz(lol)
+wall2:rotationz(lol)
+wall3:rotationz(lol)
+floor:rotationz(lol)
+
+end}
+
+wall1:ztest(1)
+wall1:SetTextureFiltering(true)
+wall3:ztest(1)
+wall3:SetTextureFiltering(true)
+
+wall2:ztest(1)
+wall2:SetTextureFiltering(true)
+chorus_cube:zbuffer(1)
+
+
+chorus_cube:zoom(1):z(0):zoomz(0.5)
+chorus_cube:SetDrawFunction(function()
+	wall1:rotationx(0)
+	wall1:x(0)
+	wall1:y(0)
+	wall1:z(textureSize)
+	wall1:rotationy(0 + insideOut)
+	wall1:Draw()
+	
+	wall2:x(textureSize)
+	wall2:y(0)
+	wall2:z(0)
+	wall2:rotationy(-90 + insideOut)
+	wall2:Draw()
+	
+	wall1:x(0)
+	wall1:y(0)
+	wall1:z(-textureSize)
+	wall1:rotationy(180 + insideOut)
+	wall1:Draw()
+	
+	wall3:x(-textureSize)
+	wall3:y(0)
+	wall3:z(0)
+	wall3:rotationy(90 + insideOut)
+	wall3:Draw()
+	
+	
+	floor:x(0)
+	floor:y(-textureSize)
+	floor:z(0)
+	floor:rotationy(0)
+	floor:rotationx(-90+insideOut)
+	floor:Draw()
+	
+	floor:x(0)
+	floor:y(textureSize)
+	floor:z(0)
+	floor:rotationy(0)
+	floor:rotationx(90+insideOut)
+	floor:Draw()
+end)
+
+chorus_cube:xy(scx,scy)
+chorus_cube:z(175)
+
+definemod {'cuberotx', 'cuberoty', 'cuberotz', 'cubex', 'cubey', 'cubezoom', 'cubezoomy', function(rotsx,rotsy,rotsz,movx,movy,zoomc,zoomcy)
+	chorus_cube:rotationx(rotsx)
+	chorus_cube:rotationy(rotsy)
+	chorus_cube:rotationz(rotsz)
+	chorus_cube:x(scx+movx)
+	chorus_cube:y(scy+movy)
+	chorus_cube:zoom(zoomc/100)
+	chorus_cube:zoomy(zoomcy/100)
+end}
+
+set{360,256,'spacesize',50,'cubezoomy',50,'cubezoom',0,'cuberoty'}
+add{360,72,linear,-360*4,'cuberoty'}
+{400-32,64,inQuad,720,'cuberotx'}
+
 reset{432}
+

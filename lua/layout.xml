@@ -1,4 +1,45 @@
-<Layer Type = "ActorFrame" InitCommand="%function(self) sw,sh,scx,scy = SCREEN_WIDTH,SCREEN_HEIGHT,SCREEN_CENTER_X,SCREEN_CENTER_Y self:fov(90) self:SetFarDist(99999) end" FarDist="999999"><children>
+<Layer Type = "ActorFrame" FOV='120' InitCommand="%function(self) sw,sh,scx,scy = SCREEN_WIDTH,SCREEN_HEIGHT,SCREEN_CENTER_X,SCREEN_CENTER_Y self:SetFarDist(99999) end" FarDist="999999"><children>
+	
+	<Layer Type="Quad" Name="ClearZ" InitCommand="blend,noeffect;clearzbuffer,1" />
+	
+	<Layer Type = "ActorFrame" Name="KaleidoGroupLayer" InitCommand="xy,scx,scy"><children>
+		<Layer Type = "ActorFrame" Name="KaleidoGroup" InitCommand="xy,-scx,-scy"><children>
+			<Layer File="kasser/shaders/k-g.png" Name="kaleidoGradient" 
+				InitCommand="%function(self)
+					self:hidden(0)
+					self:diffuse(.7,.5,.8,1)
+					self:xy(scx,scy)
+					self:zoomto(sw*50,sh*50)
+					self:customtexturerect(0,0,50,100)
+					self:texcoordvelocity(0,-0.1)
+				end" />
+				
+			<Layer Type = "ActorFrameTexture" InitCommand = "%xero.aft" Name = "kal_aft" />
+				
+			<Layer 
+				Type = "Sprite"
+				Frag = "kasser/shaders/kaleido.frag"
+				Name = "kaleido"
+				OnCommand="%function(self) 
+					xero()
+					self:zoomto(sw*50,sh*50)
+					self:SetTexture(kal_aft:GetTexture())
+					self:diffusealpha(1)
+				end"
+			/>
+		</children></Layer>
+	</children></Layer>
+	
+	
+
+	<Layer Type = "ActorFrame" Name = "chorus_cube" fov = '120'><children>
+		<Layer File = "kasser/shaders/k-g.png" Name = "wall2"/>
+		<Layer File = "kasser/shaders/k-g.png" Name = "wall1"/>
+		<Layer File = "kasser/shaders/k-g.png" Name = "wall3"/>
+		<Layer File = "kasser/shaders/k-g.png" Name = "floor"/>
+	</children></Layer>
+	
+	<Layer Type="Quad" Name="ClearZ" InitCommand="blend,noeffect;clearzbuffer,1" />
 	
 	<Layer Type = "ActorProxy" Name = "PC[1]" />
 	<Layer Type = "ActorProxy" Name = "PC[2]" />
