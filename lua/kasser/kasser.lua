@@ -89,11 +89,13 @@ plr={1,2,3,4}
 m{162,100,'arrowpath',700,'arrowpathgirth',25,'arrowpathdrawsize'}
 
 plr={3,4}
-m{162,50,'splinextype',50,'splineytype',50,'brake',100,'stealth',100,'dark',100,'spiralholds'}
+m{162,50,'splinextype',50,'splineytype',75,'brake',100,'stealth',100,'dark',100,'spiralholds'}
 
 
 plr={1,2}
 m{162,-100,'drawsizeback'}
+me{164,2,outCubic,-200,'z'}
+{192,4,inOutQuad,0,'z'}
 
 m{162,122.7,'kaleidoS'}
 add{162,68,inOutExpo,3,'kaleidoS'}
@@ -102,12 +104,23 @@ m{162,1100,'dpadinner',50,'reverse',50,'flip',80,'brake',-100,'spiralholds',50,'
 plr={1,2,3,4}
 add{162,196-162,linear,720*1.5,'rotz'}
 {196,32,linear,720/1.5,'rotz'}
-{196,1,inQuad,720/32,'rotx'}
-{197,32-1,linear,720-720/32,'rotx'}
-{196,8,inOutSine,100,'y',100,'x'}
-{196+8,8,inOutSine,-200,'y',100,'x'}
-{196+16,8,inOutSine,200,'y',-300,'x'}
-{196+24,8,inOutSine,-200,'y',0,'x'}
+{196,1,inQuad,-720/32,'rotx'}
+{197,32-1-4,linear,-720+720/32-90,'rotx'}
+me{196,4,linear,0,'y',0,'x',150,'z'}
+{196+4,4,linear,-0,'y',0,'x',125,'z'}
+{196+8,4,linear,-0,'y',-0,'x',100,'z'}
+{196+12,4,linear,0,'y',-0,'x',75,'z'}
+{196+16,4,linear,0,'y',0,'x',0,'z'}
+plr={1,2}
+me{196,4,linear,100,'brake'}
+plr={1,2,3,4}
+me{196,4,linear,-100,'drawsizeback'}
+
+
+-- hide{196, 32, plr = 1, column = {0}}
+-- {196, 32, plr = 2, column = {1}}
+-- {196, 32, plr = 3, column = {3}}
+-- {196, 32, plr = 4, column = {2}}
 
 fe{162,196-162,linear,0,90,function(p)
 	KaleidoGroupLayer:rotationz(p)
@@ -118,7 +131,7 @@ end}
 end}
 
 plr=2
-m{162,45+90,'rotz'}
+m{162,45+180,'rotz'}
 
 plr={3,4}
 m{162,50,'reverse',50,'flip',-100,'spiralholds',50,'mini'}
@@ -135,6 +148,18 @@ for i=166,191 do
 	plr={1,2,3,4}
 	me{i,2,flip(outExpo),-500,'tiny'}
 end
+
+me{164,2,flip(outExpo),-500,'tiny'}
+{171.5,2,flip(outCirc),-1000,'tinyy'}
+{176.25,1,flip(outCirc),-1000,'tinyx'}
+{178.25,1,flip(outCirc),-1000,'tinyy'}
+{179.25,1,flip(outCirc),-700,'tinyx'}
+{179.5,1,flip(outCirc),-700,'tinyy'}
+{179.75,1,flip(outCirc),-700,'tinyx'}
+{180.5,2,flip(outCirc),-1000,'tinyy'}
+{186.25,1,flip(outCirc),-1000,'tinyx'}
+{188.25,1,flip(outCirc),-1000,'tinyy'}
+{189.25,1,flip(outCirc),-1000,'tinyy'}
 
 
 f{192,function()
@@ -234,13 +259,13 @@ for pn=1,4 do
 	for col = 0,3 do
 		P[pn]:SetNumPathGradientPoints(col,4)
 		
-		P[pn]:SetPathGradientColor(0,col,1,0,1,0)
+		P[pn]:SetPathGradientColor(0,col,1,1,0,0)
 		P[pn]:SetPathGradientPoint(0,col,.25)
-		P[pn]:SetPathGradientColor(1,col,.25,0,.5,1)
+		P[pn]:SetPathGradientColor(1,col,.67,.6,0,1)
 		P[pn]:SetPathGradientPoint(1,col,2)
-		P[pn]:SetPathGradientColor(2,col,.25,0,.5,.7)
+		P[pn]:SetPathGradientColor(2,col,.67,.6,0,.7)
 		P[pn]:SetPathGradientPoint(2,col,4)
-		P[pn]:SetPathGradientColor(3,col,1,0,1,0)
+		P[pn]:SetPathGradientColor(3,col,1,1,0,0)
 		P[pn]:SetPathGradientPoint(3,col,5)
 	end
 end
@@ -253,21 +278,21 @@ f{360,function()
 		for col = 0,3 do
 			P[pn]:SetNumPathGradientPoints(col,8)
 			
-			P[pn]:SetPathGradientColor(0,col,1,0,1,0)
+			P[pn]:SetPathGradientColor(0,col,1,1,1,0)
 			P[pn]:SetPathGradientPoint(0,col,-5)
-			P[pn]:SetPathGradientColor(1,col,.25,0,.5,1)
+			P[pn]:SetPathGradientColor(1,col,1,1,1,.6)
 			P[pn]:SetPathGradientPoint(1,col,-4)
-			P[pn]:SetPathGradientColor(2,col,.25,0,.5,1)
+			P[pn]:SetPathGradientColor(2,col,1,.6,.0,.6)
 			P[pn]:SetPathGradientPoint(2,col,-1)
-			P[pn]:SetPathGradientColor(3,col,1,0,1,0)
+			P[pn]:SetPathGradientColor(3,col,1,.6,0,0)
 			P[pn]:SetPathGradientPoint(3,col,-.5)
-			P[pn]:SetPathGradientColor(4,col,1,0,1,0)
+			P[pn]:SetPathGradientColor(4,col,1,.6,0,0)
 			P[pn]:SetPathGradientPoint(4,col,.25)
-			P[pn]:SetPathGradientColor(5,col,.25,0,.5,1)
+			P[pn]:SetPathGradientColor(5,col,1,.6,.0,.7)
 			P[pn]:SetPathGradientPoint(5,col,2)
-			P[pn]:SetPathGradientColor(6,col,.25,0,.5,.7)
+			P[pn]:SetPathGradientColor(6,col,.6,1,1,.7)
 			P[pn]:SetPathGradientPoint(6,col,4)
-			P[pn]:SetPathGradientColor(7,col,1,0,1,0)
+			P[pn]:SetPathGradientColor(7,col,.6,1,1,0)
 			P[pn]:SetPathGradientPoint(7,col,5)
 		end
 	end
@@ -392,8 +417,46 @@ definemod {'cuberotx', 'cuberoty', 'cuberotz', 'cubex', 'cubey', 'cubezoom', 'cu
 end}
 
 set{360,64,'spacesize',50,'cubezoomy',50,'cubezoom',0,'cuberoty'}
-add{360,72,linear,-360*4,'cuberoty'}
-{400-32,64,inQuad,720,'cuberotx'}
+
+if not slumpo then
+	add{360,72,linear,-360*4,'cuberoty'}
+	{400-32,64,inQuad,720,'cuberotx'}
+end
+
+if slumpo then
+	add{364,8,inOutQuad,30,'cuberotz'}
+	{372,8,inOutQuad,-60,'cuberotz'}
+	{380,8,inOutQuad,90,'cuberotz'}
+	{388,8,inOutQuad,-120,'cuberotz'}
+	{396,8,inOutQuad,150,'cuberotz'}
+	{404,8,inOutQuad,-180,'cuberotz'}
+	{412,8,inOutQuad,210,'cuberotz'}
+	{420,8,inOutQuad,-240,'cuberotz'}
+	{400-32,64,inQuad,720,'cuberotx'}
+	plr={3,4}
+	add{364,8,inOutQuad,-45,'roty'}
+	{372,8,inOutQuad,90,'roty'}
+	{380,8,inOutQuad,-135,'roty'}
+	{388,8,inOutQuad,180,'roty'}
+	{396,8,inOutQuad,-225,'roty'}
+	{404,8,inOutQuad,270,'roty'}
+	{412,8,inOutQuad,-315,'roty'}
+	{420,8,inOutQuad,360,'roty'}
+	{428,4,inQuad,720,'roty'}
+	plr={1,2}
+	add{364,8,inOutQuad,45,'rotz'}
+	{372,8,inOutQuad,-90,'rotz'}
+	{380,8,inOutQuad,135,'rotz'}
+	{388,8,inOutQuad,-180,'rotz'}
+	{396,8,inOutQuad,225,'rotz'}
+	{404,8,inOutQuad,-270,'rotz'}
+	{412,8,inOutQuad,315,'rotz'}
+	{420,8,inOutQuad,-360,'rotz'}
+	{428,4,inQuad,720,'rotz'}
+	plr={1,2,3,4}
+	add{400-32,64,linear,720,'rotx'}
+	
+end
 
 reset{432}
 
