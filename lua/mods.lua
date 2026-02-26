@@ -38,3 +38,5 @@ require('kasser.kasser')
 -- your code goes here here:
 setdefault{2, 'xmod', 100, 'zbuffer', 100, 'receptorzbuffer', 100, 'dizzyholds', 100, 'stealthpastreceptors', 100,'scrollspeedmult',100, 'halgun', 100, 'disablemines', 100, 'modtimer',100,'cover'}
 card{4, 68, 'intro', 1, {0.5, 0.5, 0.5, 1}}
+
+{368, 432, 'Did FOOL snap on that SACRIFICE?', 1, {1, 0.5, 1, 18}}
