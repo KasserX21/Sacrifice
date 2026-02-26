@@ -89,7 +89,7 @@ plr={1,2,3,4}
 m{162,100,'arrowpath',700,'arrowpathgirth',25,'arrowpathdrawsize'}
 
 plr={3,4}
-m{162,50,'splinextype',50,'splineytype',50,'brake',100,'stealth',100,'dark'}
+m{162,50,'splinextype',50,'splineytype',50,'brake',100,'stealth',100,'dark',100,'spiralholds'}
 
 
 plr={1,2}
@@ -130,6 +130,11 @@ f{192,function()
 	PP[3]:hidden(0)
 	PP[4]:hidden(0)
 end}
+
+for i=166,191 do
+	plr={1,2,3,4}
+	me{i,2,flip(outExpo),-500,'tiny'}
+end
 
 
 f{192,function()
@@ -326,10 +331,11 @@ wall2:SetTextureFiltering(true)
 chorus_cube:zbuffer(1)
 
 
-chorus_cube:zoom(1):z(0):zoomz(0.5)
+chorus_cube:zoom(1):z(100):zoomz(0.35)
 chorus_cube:SetDrawFunction(function()
 	wall1:rotationx(0)
 	wall1:x(0)
+	wall1:zoom(0.25)
 	wall1:y(0)
 	wall1:z(textureSize)
 	wall1:rotationy(0 + insideOut)
@@ -337,6 +343,7 @@ chorus_cube:SetDrawFunction(function()
 	
 	wall2:x(textureSize)
 	wall2:y(0)
+	wall2:zoom(0.25)
 	wall2:z(0)
 	wall2:rotationy(-90 + insideOut)
 	wall2:Draw()
@@ -350,6 +357,7 @@ chorus_cube:SetDrawFunction(function()
 	wall3:x(-textureSize)
 	wall3:y(0)
 	wall3:z(0)
+	wall3:zoom(0.25)
 	wall3:rotationy(90 + insideOut)
 	wall3:Draw()
 	
@@ -360,6 +368,7 @@ chorus_cube:SetDrawFunction(function()
 	floor:rotationy(0)
 	floor:rotationx(-90+insideOut)
 	floor:Draw()
+	floor:zoom(0.25)
 	
 	floor:x(0)
 	floor:y(textureSize)
@@ -382,7 +391,7 @@ definemod {'cuberotx', 'cuberoty', 'cuberotz', 'cubex', 'cubey', 'cubezoom', 'cu
 	chorus_cube:zoomy(zoomcy/100)
 end}
 
-set{360,256,'spacesize',50,'cubezoomy',50,'cubezoom',0,'cuberoty'}
+set{360,64,'spacesize',50,'cubezoomy',50,'cubezoom',0,'cuberoty'}
 add{360,72,linear,-360*4,'cuberoty'}
 {400-32,64,inQuad,720,'cuberotx'}
 
