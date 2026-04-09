@@ -70,7 +70,9 @@ add {i, 5, outSine, 360*2, 'roty'}
 end
 
 for i,v in pairs(notes) do
+    if v[1] < 148 then 
 ease {v[1], 2, flip(linear), -50, 'wave', 50, 'brake'}
+    end
 ease {v[1], 1, flip(outElastic:params(20,0.3)), -80, 'tinyx'}
 ease {v[1], 1, flip(outCirc), 800, 'zoomz'}
 ease {v[1], 1, flip(outCirc), -3200, 'tinyz'}
@@ -91,8 +93,7 @@ for i = 148, 159, 1 do
 ease {i, 1, bounce, 0, 'reverse', plr = 1}
 ease {i, 1, bounce, 100, 'reverse', plr = 2}
 
-ease {i, 1, bounce, 0, 'flip', plr = 1}
-ease {i, 1, bounce, 100, 'flip', plr = 2}
+ease {i, 1, bounce, 0, 'flip'}
 
 ease {i, 1, flip(outCirc), -300, 'tiny'}
 
