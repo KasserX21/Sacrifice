@@ -1,7 +1,7 @@
 <Layer Type = "ActorFrame" FOV='120' InitCommand="%function(self) sw,sh,scx,scy = SCREEN_WIDTH,SCREEN_HEIGHT,SCREEN_CENTER_X,SCREEN_CENTER_Y self:SetFarDist(99999) end" FarDist="999999"><children>
 	
 	<Layer Type="Quad" Name="ClearZ" InitCommand="blend,noeffect;clearzbuffer,1" />
-	
+
 	<Layer Type = "ActorFrame" Name="KaleidoGroupLayer" InitCommand="xy,scx,scy"><children>
 		<Layer Type = "ActorFrame" Name="KaleidoGroup" InitCommand="xy,-scx,-scy"><children>
 			<Layer File="kasser/shaders/k-g.png" Name="kaleidoGradient" 
@@ -30,7 +30,12 @@
 		</children></Layer>
 	</children></Layer>
 	
-	
+	<Layer Type = "ActorFrame" Name = "Squares" FOV = "120"><children>
+	<Layer File = "ant/square.png" Name = 'Square'/>
+	<Layer Type="Quad" Name="ClearZ" InitCommand="blend,noeffect;clearzbuffer,1" />
+
+</children></Layer>
+
 
 	<Layer Type = "ActorFrame" Name = "chorus_cube" fov = '120'><children>
 		<Layer File = "kasser/shaders/k-g.png" Name = "wall2"/>

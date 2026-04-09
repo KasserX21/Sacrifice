@@ -32,6 +32,8 @@ function RealFOV(fov)
 end
 
 require('ant.ant')
+require('ant.yeah')
+
 require('kasser.kasser')
 --require('Ant/proxywall')
 
